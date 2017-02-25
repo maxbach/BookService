@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.portlet.ModelAndView;
 import service.BookService;
 
 import java.util.Map;
@@ -35,7 +34,7 @@ public class BookController {
         return "home";
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String newBook(@ModelAttribute("bookEx") Book book, BindingResult result) {
         service.addBook(book);
         return "redirect:/home";
