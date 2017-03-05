@@ -9,23 +9,19 @@
 
 
     <http>
-        <intercept-url pattern="/add*" access="ROLE_ADMIN"/>
-        <intercept-url pattern="/delete*" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/add*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/delete*" access="hasRole('ROLE_ADMIN')"/>
         <form-login login-page="/home.jsp" default-target-url="/"
-                    authentication-failure-url="/login.jsp?error=true"
+                    authentication-failure-url="/home?login_error=1"
                     username-parameter="j_username" password-parameter="j_password"/>
         <logout logout-url="/logout" logout-success-url="/home"/>
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
-        <remember-me/>
+        <remember-me user-service-ref="userDetailsService"/>
     </http>
 
-    <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="admin" password="pass" authorities="ROLE_ADMIN"/>
-                <user name="user" password="user" authorities="ROLE_USER"/>
-            </user-service>
-        </authentication-provider>
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userDetailsService"/>
     </authentication-manager>
 
+    <beans:bean class="service.UserDetailsServiceImpl" id="userDetailsService"/>
 </beans:beans>

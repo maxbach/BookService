@@ -12,7 +12,7 @@
 <h2>What have I read?</h2>
 
 <sec:authorize access="isAnonymous()">
-    <c:if test="${not empty param.error}">
+    <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
         <font color="red"> Ошибка входа
             : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} </font>
     </c:if>
@@ -31,8 +31,8 @@
                 <td><input type="checkbox" name="_spring_security_remember_me"/></td>
             </tr>
             <tr>
-                <td colspan="2" align="right"><input type="submit" value="Вход"/>
-                    <input type="reset" value="Сброс"/></td>
+                <td colspan="3" align="right"><input type="submit" value="Вход"/>
+                    <input type="reset" value="Сброс"/> <a href="/register">Регистрация</a></td>
             </tr>
         </table>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
