@@ -24,7 +24,17 @@ public class Book {
     private int rating;
 
     @Column(name = "book_description")
-    private String description;
+    private String text;
+
+    public Book() {
+    }
+
+    public Book(String name, String author, int rating, String text) {
+        this.name = name;
+        this.author = author;
+        this.rating = rating;
+        this.text = text;
+    }
 
     public int getRating() {
         return rating;
@@ -58,21 +68,11 @@ public class Book {
         this.author = author;
     }
 
-    public String getDescription() {
-        return description;
+    public String getText() {
+        return text;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Book() {
-    }
-
-    public Book(String name, String author, int rating, String description) {
-        this.name = name;
-        this.author = author;
-        this.rating = rating;
-        this.description = description;
+    public void setText(String description) {
+        this.text = description;
     }
 }

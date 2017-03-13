@@ -40,4 +40,9 @@ public class BookDaoImpl implements BookDao {
     public Book getBook(int id) {
         return sessionFactory.getCurrentSession().get(Book.class, id);
     }
+
+    @Transactional
+    public void update(Book book) {
+        sessionFactory.getCurrentSession().update(book);
+    }
 }

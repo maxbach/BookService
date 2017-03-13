@@ -54,6 +54,7 @@
             <li>${book.name} by ${book.author} ${book.rating}/10.
             <a href="/read/${book.id}">Читать обзор</a>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <a href="/edit/${book.id}">Редактировать рецензию </a>
                 <a href="/delete/${book.id}">Удалить из списка</a></li>
             </sec:authorize>
         </c:forEach>
@@ -81,11 +82,11 @@
             </tr>
 
             <tr>
-                <td><form:label path="description">
+                <td><form:label path="text">
                     Описание
                 </form:label></td>
-                <td><form:textarea path="description" rows="5" cols="30"/></td>
-                <td><form:errors path="description"/></td>
+                <td><form:textarea path="text" rows="5" cols="30"/></td>
+                <td><form:errors path="text"/></td>
             </tr>
 
             <tr>

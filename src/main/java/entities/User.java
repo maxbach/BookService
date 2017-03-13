@@ -1,8 +1,6 @@
 package entities;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by maxbacinskiy on 28.02.17.
@@ -25,18 +23,18 @@ public class User {
     @Transient
     private String confirmPassword;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_role")
+    private Role role;
 
     public User() {
-        roles = new HashSet<Role>();
+
     }
 
-    public User(String login, String password, Set<Role> roles) {
+    public User(String login, String password, Role role) {
         this.login = login;
         this.password = password;
-        this.roles = roles;
+        this.role = role;
     }
 
     public String getConfirmPassword() {
@@ -71,11 +69,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

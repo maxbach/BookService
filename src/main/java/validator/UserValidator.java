@@ -25,8 +25,8 @@ public class UserValidator implements Validator {
         User user = (User) o;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "Заполните поле");
 
-        if (user.getLogin().length() < 8 || user.getLogin().length() > 32) {
-            errors.rejectValue("login", "login.size", "Размер логина от 8 до 32 символов");
+        if (user.getLogin().length() < 6 || user.getLogin().length() > 32) {
+            errors.rejectValue("login", "login.size", "Размер логина от 6 до 32 символов");
         }
 
         if (userService.getUserByLogin(user.getLogin()) != null) {

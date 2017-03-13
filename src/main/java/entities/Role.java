@@ -1,42 +1,21 @@
 package entities;
 
-
-import javax.persistence.*;
-
 /**
- * Created by maxbacinskiy on 28.02.17.
+ * Created by maxbacinskiy on 01.03.17.
  */
-@Entity
-@Table(name = "ROLE")
-public class Role {
-    @Id
-    @GeneratedValue
-    @Column(name = "role_id")
-    private int id;
+public enum Role {
+    USER("ROLE_USER"),
+    ADMIN("ROLE_ADMIN"),
+    DBA("ROLE_DBA"),
+    ANONYMOUS("ROLE_ANONYMOUS");
 
-    @Column(name = "role_name")
     private String name;
 
-    public Role() {
-    }
-
-    public Role(String name) {
+    Role(String name) {
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

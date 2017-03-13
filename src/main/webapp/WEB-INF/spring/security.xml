@@ -11,17 +11,22 @@
     <http>
         <intercept-url pattern="/add*" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/delete*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/remove*" access="hasRole('Role_USER')"/>
+        <intercept-url pattern="/editB*" access="hasAnyRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/editC*" access="hasAnyRole('ROLE_USER')"/>
+
+
         <form-login login-page="/home.jsp" default-target-url="/"
                     authentication-failure-url="/home?login_error=1"
                     username-parameter="j_username" password-parameter="j_password"/>
         <logout logout-url="/logout" logout-success-url="/home"/>
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
-        <remember-me user-service-ref="userDetailsService"/>
+        <remember-me user-service-ref="userService"/>
     </http>
 
     <authentication-manager alias="authenticationManager">
-        <authentication-provider user-service-ref="userDetailsService"/>
+        <authentication-provider user-service-ref="userService"/>
     </authentication-manager>
 
-    <beans:bean class="service.UserDetailsServiceImpl" id="userDetailsService"/>
+    <beans:bean class="service.UserServiceImpl" id="userService"/>
 </beans:beans>
