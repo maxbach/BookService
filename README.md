@@ -30,13 +30,13 @@
 
 ## Скриншоты
 
-###Главная страница админа
+### Главная страница админа
 ![main screen](/screenshots/admin_main_screen.png)
 
-###Главная страница юзера
+### Главная страница юзера
 ![main screen](/screenshots/user_main_screen.png)
 
-###Страница регистрации
+### Страница регистрации
 ![main screen](/screenshots/register_page.png)
 
 
